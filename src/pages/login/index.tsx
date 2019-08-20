@@ -1,11 +1,13 @@
 import * as React from 'react';
 import {Form,Button,Input,Icon,Tabs, message} from 'antd';
+import { connect } from 'dva'
+import {post} from '@utils/index';
 import styles from './index.css'
-import { object } from 'prop-types';
 
  interface Props {
   name:string;
   form:any,
+  dispatch:any
 }
 
 interface State {
@@ -13,6 +15,7 @@ interface State {
 }
 const { TabPane } = Tabs;
 
+@connect()
  class Hello extends React.Component<Props,State> {
    constructor(props:any) {
      super(props)
@@ -26,35 +29,37 @@ const { TabPane } = Tabs;
       if(err) {return }
       console.log('111111111111111111',values)
       const {username,password} = values;
-      fetch('http://localhost:7001/login',{
-      method:"POST",
-      body:JSON.stringify({
-        ...values
-      }),
-      headers: new Headers({
-        'Content-Type': 'application/json'
-        // "Authorization":'Bearer 123'
-      }),
+      this.props.dispatch({type:'login/login',payload:values})
+    //   fetch('http://localhost:7001/login',{
+    //   method:"POST",
+    //   body:JSON.stringify({
+    //     ...values
+    //   }),
+    //   headers: new Headers({
+    //     'Content-Type': 'application/json'
+    //     // "Authorization":'Bearer 123'
+    //   }),
 
-    }).then(async res => {
-      return res.json()
-    }).then(data => {
-      console.log('3333333333',data)
-      if(data.data.user) {
-        localStorage.setItem('token',data.data.token)
-      } else {
-        this.props.form.setFields({
-          username: {
-            value:username,
-            errors: [new Error('username or password is error')],
-          },
-          password:{
-            value:username,
-            errors: [new Error('username or password is error')],
-          }
-        });
-      }
-    })
+    // }).then(async res => {
+    //   return res.json()
+    // })
+    // post("http://localhost:7001/login",values).then((data:any) => {
+    //   console.log('3333333333',data)
+    //   if(data.data.user) {
+    //     localStorage.setItem('token',data.data.token)
+    //   } else {
+    //     this.props.form.setFields({
+    //       username: {
+    //         value:username,
+    //         errors: [new Error('username or password is error')],
+    //       },
+    //       password:{
+    //         value:username,
+    //         errors: [new Error('username or password is error')],
+    //       }
+    //     });
+    //   }
+    // })
     })
   }
   handleRegist =() => {
@@ -168,4 +173,4 @@ const { TabPane } = Tabs;
   }
 }
 
-export default Form.create()(Hello)
+export default  Form.create()(Hello)

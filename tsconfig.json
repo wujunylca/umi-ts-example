@@ -12,7 +12,8 @@
     "baseUrl": ".",
     "strict": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@utils/*":["src/utils/*"]
     },
     "allowSyntheticDefaultImports": true
   }

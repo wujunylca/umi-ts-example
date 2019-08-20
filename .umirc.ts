@@ -1,10 +1,16 @@
 import { IConfig } from 'umi-types';
+import path from 'path';
+import {routes} from './src/config/index';
 
-// ref: https://umijs.org/config/
+
+console.log('11111111111',routes)
 const config: IConfig =  {
+  alias: {
+    '@': path.resolve(__dirname, 'src'),
+    '@utils': path.resolve(__dirname, 'src/utils'),
+  },
   treeShaking: true,
   plugins: [
-    // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
       antd: true,
       dva: true,
@@ -14,11 +20,22 @@ const config: IConfig =  {
 
       routes: {
         exclude: [
+          /models\//,
+          /services\//,
+          /model\.(t|j)sx?$/,
+          /service\.(t|j)sx?$/,
           /components\//,
         ],
       },
     }],
   ],
+  routes:routes
+  // routes:[
+  //   {
+  //     path:'/login',
+  //     component:'./login/index.tsx'
+  //   }
+  // ]
 }
 
 export default config;
