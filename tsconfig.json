@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "experimentalDecorators": false,
     "experimentalDecorators": true,
+    // "lib":["es6"],
+    "lib": ["dom", "es6", "es7"],
     "target": "esnext",
     "module": "esnext",
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "jsx": "react",
@@ -11,10 +13,16 @@
     "sourceMap": true,
     "baseUrl": ".",
     "strict": true,
+    "traceResolution": true,
+    "rootDirs": [
+      "/src/config"
+    ],
     "paths": {
       "@/*": ["src/*"],
       "@utils/*":["src/utils/*"]
     },
-    "allowSyntheticDefaultImports": true
-  }
+  },
+  "include": [
+    "src/**/*"
+],
 }

@@ -1,9 +1,7 @@
 import { IConfig } from 'umi-types';
 import path from 'path';
-import {routes} from './src/config/index';
+const router = require('./src/config/index');
 
-
-console.log('11111111111',routes)
 const config: IConfig =  {
   alias: {
     '@': path.resolve(__dirname, 'src'),
@@ -17,25 +15,18 @@ const config: IConfig =  {
       dynamicImport: true,
       title: 'umi-app',
       dll: false,
-
       routes: {
         exclude: [
           /models\//,
-          /services\//,
-          /model\.(t|j)sx?$/,
-          /service\.(t|j)sx?$/,
-          /components\//,
+          // /services\//,
+          // /model\.(t|j)sx?$/,
+          // /service\.(t|j)sx?$/,
+          // /components\//,
         ],
       },
     }],
   ],
-  routes:routes
-  // routes:[
-  //   {
-  //     path:'/login',
-  //     component:'./login/index.tsx'
-  //   }
-  // ]
+  routes:router.routes,
 }
 
 export default config;

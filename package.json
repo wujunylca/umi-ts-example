@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/whatwg-fetch": "^0.0.33",
+    "qs": "^6.8.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "whatwg-fetch": "^3.0.0"
