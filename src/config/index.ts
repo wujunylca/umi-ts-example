@@ -11,14 +11,35 @@ const routes = [
     routes:[
       {
         path:'/',
-        redirect:'/home'
+        redirect:'/home',
+        authority:201
       },
       {
         path:'/home',
-        component:'./home/index'
+        component:'./home/index',
+        authority:202
+      },
+      {
+        path:'/color',
+        component:'./color/index',
+        authority:203
+      },
+      {
+        path:'/compass',
+        component:'./compass/index',
+        authority:204
+      },
+      {
+        path:'/hospital',
+        component:'./hospital/index',
+        authority:205
+      },
+      {
+        path:'/404',
+        component:'./404',
       }
     ]
-  }
+  },
 ]
 
 module.exports = {
