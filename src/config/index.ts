@@ -7,12 +7,12 @@ const routes = [
   {
     path:'/',
     component:'../layouts/index',
-    Routes:['./src/config/authorizedRouter'],
+    // Routes:['./src/config/authorizedRouter'],
     routes:[
       {
         path:'/',
         redirect:'/home',
-        authority:201
+        // authority:201
       },
       {
         path:'/home',
@@ -37,7 +37,11 @@ const routes = [
       {
         path:'/404',
         component:'./404',
-      }
+      },
+      {
+        path:'/alert',
+        component:'./alert',
+      },
     ]
   },
 ]

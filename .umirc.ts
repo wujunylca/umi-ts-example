@@ -26,7 +26,7 @@ const config: IConfig =  {
       },
     }],
   ],
-  routes:router.routes,
+  // routes:router.routes,
 }
 
 export default config;
